@@ -1,0 +1,24 @@
+<div class="navbar bg-base-100 justify-center flex-wrap lg:flex lg:flex-row lg:flex-nowrap">
+    <div class="navbar-start flex justify-center lg:justify-normal">
+        <a class="btn btn-ghost text-xl" [routerLink]="['/']">MiccoPoke</a>
+    </div>
+    <div class="navbar-center flex">
+        <ul class="menu menu-horizontal px-1">
+            <form class="join" (ngSubmit)="handleSubmit()">
+                <div>
+                    <div>
+                        <input type="text" class="input input-bordered join-item min-w-[200px] w-56"
+                            placeholder="Search for a pokemon" name="searchInput" [(ngModel)]="searchInput" required />
+                    </div>
+                </div>
+                <div class="indicator">
+                    <button type="submit" class="btn join-item"
+                        [routerLink]="['/'+searchInput.toLowerCase()]">Search</button>
+                </div>
+            </form>
+        </ul>
+    </div>
+    <div class="navbar-end hidden lg:flex">
+        <a class="btn">Button</a>
+    </div>
+</div>

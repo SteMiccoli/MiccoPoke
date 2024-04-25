@@ -1,0 +1,30 @@
+<div class="flex justify-center mt-5">
+    @if (context.isContentLoaded()) {
+    @if (context.pokemonData().id) {
+    <div class="card w-96 h-[30rem] bg-base-100 shadow-xl">
+        <figure [class]="'w-90 h-52 bg-'+context.pokemonData().types[0].type.name">
+            <img class="h-48" [src]="context.pokemonData().sprites.front_default" alt="Shoes" />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">
+                {{ context.pokemonData().name }}
+                @for (type of context.pokemonData().types; track type) {
+                <div [class]="'badge bg-' + type.type.name + ' text-'+type.type.name">{{ type.type.name }}</div>
+                }
+            </h2>
+            @for (stat of context.pokemonData().stats; track $index) {
+            <div class="flex">
+                <p>{{stat.stat.name}}</p>
+                <p class="text-end">{{stat.base_stat}}</p>
+            </div>
+            }
+        </div>
+    </div>
+    }
+    @else {
+    <h2>{{ context.selectedPokemon() }} not found</h2>
+    }
+    } @else {
+    <div class="skeleton w-96 h-[30rem] bg-base-100 shadow-xl"></div>
+    }
+</div>
